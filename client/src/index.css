@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  color: #4B4237  ;
+}
+
+body{
+  padding: 0px;
+  margin: 0px;
+  font-size: 17.5;
+  
+}
+
+.Servicescontainer{
+  box-sizing: border-box;
+  padding-top: 2%;
+  height: 90%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 16.5% 7.5% 7.5% 7.5% 7.5% 0% 7.5% 7.5% 7.5% 7.5%;
+  grid-template-rows: 7.5% 7.5% 7.5% 7.5% 7.5% 7.5% 7.5% 7.5% 7.5% 7.5%;
+  gap: 2.5%;
+  padding-left: 3%;
+  background-color: #ffffff;
+}
+
+.HeadingText{
+  padding-left: 1em;
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 25;
+  text-decoration: none;
+  color: #07314A
+}
+
+#Divider{
+  grid-row: 2/10;
+  grid-column: 6/6;
+  border: 2px solid rgba(0, 0, 0, 0.47);
+}
+
+#Buttons{
+  display: flex;
+  flex-direction: column;
+  grid-row: 9/11;
+  grid-column: 7/11;
+}
+
+#Buttons div{
+  width: 100%;
+  flex: 1;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#cancelButton{
+  border-radius: 20px;
+  width: 9em;
+  height: 3em;
+  color: #14628d;
+  border: none;
+}
+
+#submitButton{
+  border-radius: 20px;
+  width: 9em;
+  height: 3em;
+  background-color: #14628d;
+  color: #ffffff;
+  border: none;
+}
