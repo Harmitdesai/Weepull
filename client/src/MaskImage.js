@@ -1,17 +1,41 @@
 import './MaskImage.css';
+import { useState, useRef } from 'react';
 
-const MaskImage = () => {
+const MaskImage = ({imageURL}) => {
+    
+    const [isOpen, setIsOpen] = useState(false);
+  
+    const handleAddMaskClick = () => {
+      if (isOpen){
+        setIsOpen(false);
+      } else {
+        setIsOpen(true);
+      }
+    };
+
     return (
-        <div id="MaskImage">
+        <div className="MaskImage">
             <span className="HeadingText">Mask Image</span>
-            <div id="maskImageSpace">
-                <div id="TextualDescriptionContainer">
+            <div className="maskImageSpace">
+                <div className="MaskImageContainer">
 
                 </div>
-                <details>
+                <details open={isOpen}>
                     <summary>
-                    <button id="AddMask"></button>
+                        <button className="AddMask" onClick={handleAddMaskClick}></button>
                     </summary>
+                    <div className="BlurWindow">
+                    </div>
+                    <div className="MaskCard">
+                        <img className="PopUpMaskedImage" src={imageURL}/>
+                        <div className="MaskButtons">
+                          <button className="SelectArea">Select Area</button>
+                          <button className="ClearCoordinates">Clear Coordinates</button>
+                          <button className="AddMaskButton">Add Mask</button>
+                          <button className="SubmitMask">Submit</button>
+                        </div>
+                        <div className="MaskedImageCollection"></div>
+                    </div>
                 </details>
             </div>
         </div>

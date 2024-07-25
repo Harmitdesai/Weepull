@@ -1,16 +1,20 @@
-import Navbar from "./Navbar";
-import {MainImage, mainImageFile} from "./MainImage";
+import './Services.css';
+import MainImage from "./MainImage";
 import MaskImage from "./MaskImage";
 import {OtherImage, otherImageList} from "./OtherImage";
 import {TextDescription,TDList} from "./TextDescription";
 import {Tag, TagList} from "./Tag";
 import MetaData from "./MetaData";
+import { useState } from 'react';
 
 const Services = () => {
+    const [mainImageFile, setMainImageFile] = useState(null);
+    const [mainImageDataURL, setMainImageDataURL] = useState(null);
+
     return (
-        <div className="Servicescontainer">
-            <MainImage/>
-            <MaskImage/>
+        <div className="container">
+            <MainImage fileSetter={setMainImageFile} DataURLSetter={setMainImageDataURL}/>
+            <MaskImage imageURL={mainImageDataURL}/>
             <OtherImage/>
             <div id="Divider"></div>
             <TextDescription/>
