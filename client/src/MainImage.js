@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import './MainImage.css';
 
 const MainImage = ({ fileSetter, DataURLSetter}) => {
-
+    
     const mainImageInputRef = useRef(null);
     const mainImageSpaceRef = useRef(null);
 
