@@ -15,7 +15,7 @@ const Services = () => {
     return (
         <div className="container">
             <MainImage fileSetter={setMainImageFile} DataURLSetter={setMainImageDataURL}/>
-            <MaskImage imageURL={mainImageDataURL} coordinateSetter={setMaskCoordinates} coordinates={maskCoordinates}/>
+            <MaskImage imageURL={mainImageDataURL} coordinateSetter={setMaskCoordinates} coordinates={maskCoordinates} imageFile={mainImageFile}/>
             <OtherImage/>
             <div id="Divider"></div>
             <TextDescription/>
