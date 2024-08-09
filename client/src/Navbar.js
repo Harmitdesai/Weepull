@@ -19,7 +19,7 @@ const Navbar = () => {
                 <a href="services" className="unactivePage">About Us</a>
             </div>
             <div className="leftDiv">
-                <Link to="signup" className="logout">
+                <Link to="Login" className="logout">
                     <button>Image</button>
                     <span>Log Out</span>
                 </Link>
