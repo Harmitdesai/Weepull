@@ -12,6 +12,7 @@ const MaskImage = ({imageURL, coordinateSetter, coordinates, imageFile}) => {
     const [maskList, setMaskList] = useState([]);
     const [currentMask, setCurrentMask] = useState(null);
     const [currentMaksUrl, setCurrentMaskUrl] = useState(null);
+    const [coordings, setCoordings] = useState({});
 
 //Handles opening image for masking
 //Uploads image when opened for the first time
@@ -61,46 +62,6 @@ const MaskImage = ({imageURL, coordinateSetter, coordinates, imageFile}) => {
 
 //Submits coordinates
 //Note: it is not taking first coordinate, we have to solve it
-    const submitCoordinates = async () => {
-      try {
-          setEmbeddings(embeddings => ({
-            ...embeddings,
-            ['coordinates']: {coordinates}
-          }))
-          console.log(embeddings);
-          // const response = 
-          await fetch('/api/predictCoordinate', {
-              method: 'POST',
-              body: JSON.stringify(embeddings),
-              headers: {
-                  'Content-Type': 'application/json'
-              }
-          }).then(response => response.blob())
-          .then(blob => {
-              // Create a URL for the blob
-              setCurrentMask(blob);
-              console.log(currentMask);
-              setCurrentMaskUrl(URL.createObjectURL(blob));
-              overlayMask.current.src = currentMaksUrl;
-              // overlayMask.current.src = `url('mask.jpg')`
-              // Open the URL in a new window
-              // window.open(url, '_blank');
-
-          });
-          console.log('Success:');
-      } catch (error) {
-          console.error('Error:', error);
-      }
-    }
-
-    useEffect(() => {
-      if (!(coordinates.length == 0)){
-        console.log(coordinates);
-        submitCoordinates();
-      } else {
-        console.log("It is null right now");
-      }
-    }, [coordinates]);
 
     const addCoordinate = async (e) => {
       const img = MaskedImage.current;
@@ -111,8 +72,50 @@ const MaskImage = ({imageURL, coordinateSetter, coordinates, imageFile}) => {
       const scaleY = img.naturalHeight / rect.height;
       const X = Math.round(x * scaleX);
       const Y = Math.round(y * scaleY);
-      coordinateSetter([...coordinates,[X,Y]]);
+      await coordinateSetter([...coordinates,[X,Y]]);
     }
+
+    useEffect(() => {
+      if (coordinates.length !== 0){
+        console.log(coordinates);
+        setEmbeddings(embeddings => ({
+          ...embeddings,
+          ['coordinates']: coordinates
+        }));
+        console.log(embeddings);
+      } else {
+        console.log("It is null right now");
+      }
+    }, [coordinates]);
+
+    useEffect(async () => {
+      // try {
+      //     // setTimeout(()=>{console.log(embeddings)},2000);
+      //     console.log(embeddings);
+      //     if (embeddings!=null){
+      //       // await fetch('/api/predictCoordinate', {
+      //       //     method: 'POST',
+      //       //     body: JSON.stringify(embeddings),
+      //       //     headers: {
+      //       //         'Content-Type': 'application/json'
+      //       //     }
+      //       // }).then(response => response.blob())
+      //       // .then(blob => {
+      //       //     // Create a URL for the blob
+      //       //     setCurrentMask(blob);
+      //       //     console.log(currentMask);
+      //       //     setCurrentMaskUrl(URL.createObjectURL(blob));
+      //       //     overlayMask.current.src = currentMaksUrl;
+      //       //     // overlayMask.current.src = `url('mask.jpg')`
+      //       //     // Open the URL in a new window
+      //       //     // window.open(url, '_blank');
+      //       // });
+      //       // console.log('Success:');
+      //     }
+      // } catch (error) {
+      //     console.error('Error:', error);
+      // }
+    }, [embeddings]);
 
     return (
         <div className="MaskImage">
@@ -154,8 +157,8 @@ const MaskImage = ({imageURL, coordinateSetter, coordinates, imageFile}) => {
                         </div>
                         <div className="MaskButtons">
                           <button className="SelectArea">Select Area</button>
-                          <button className="ClearCoordinates" onClick={()=>{
-                            coordinateSetter([]);
+                          <button className="ClearCoordinates" onClick={async ()=>{
+                            await coordinateSetter([]);
                           }}>Clear Coordinates</button>
                           <button className="AddMaskButton" onClick={()=>{
                             if (currentMask==null){
