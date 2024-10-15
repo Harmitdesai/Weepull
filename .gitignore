@@ -1,0 +1,19 @@
+# Ignore node_modules in both client and server
+client/node_modules/
+server/node_modules/
+
+# Ignore build files
+client/build/
+
+# Ignore segment_anything in the server
+server/segment_anything/
+server/segment_anything-1.0.dist-info/
+
+# Ignore uploads folder (optional)
+server/uploads/
+
+# Ignore Python model files
+*.pth
+
+# Ignore images
+*.png

@@ -1,0 +1,47 @@
+#OtherImage{
+    grid-row: 1/11;
+    grid-column: 4/6;
+    display: flex;
+    flex-direction: column;
+  }
+  
+#OtherImage div{
+    flex: 1;
+    width: 100%;
+    border-radius: 50px;
+    background-color: #f5f4f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+#OtherImage div div{
+    width: 100%;
+    flex: 1;
+  }
+
+#UploadOtherImage{
+    border-radius: 10%;
+    background-color: #f5f4f1;
+    background-image: url('addImage.svg'); /* Replace 'icon.png' with the path to your PNG image */
+    background-size: cover; /* Cover the entire button with the background image */
+    width: 50px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    border: none; /* Remove button border */
+    cursor: pointer;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+  
+#UploadOtherImage:hover{
+    background-color: #e3e3e3;
+    box-shadow: 0em 0em 1em #a6a6a6;
+    transition: box-shadow 0.2s linear,
+                background-color 1s ease;
+  }
+  
+#OtherImageContainer{
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+  }

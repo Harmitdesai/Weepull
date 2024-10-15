@@ -1,0 +1,66 @@
+#Tag{
+    display: flex;
+    flex-direction: column;
+    grid-row: 4/7;
+    grid-column: 7/11;
+  }
+  
+  #Tag div{
+    width: 100%;
+    flex: 1;
+    border-radius: 50px;
+    background-image: linear-gradient(to right, #f5f4f1, #dedede);
+    display: flex;
+    align-items: center;
+    overflow: auto;
+  }
+
+  #TagContainer{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    gap: 10px;
+    overflow: auto;
+  }
+  
+  #Taginput{
+    color: #888888;
+    font-size: large;
+    font-family: sans-serif;
+    background-image: linear-gradient(to right, #e7e7e7, #cacaca);
+    box-shadow: 0em 0em 0.2em #bdbdbd;
+    border: none;
+    border-radius: 1em;
+    display: inline-block;
+    width: 85%;
+    height: 25%;
+    margin-top: 3%;
+    padding-top: 2%;
+    padding-left: 3%;
+    resize: none;
+    flex-shrink: 0;
+  }
+  
+  #Taginput:focus{
+    outline: none;
+  }
+  
+  #AddTag{
+    border-radius: 10%;
+    font-weight: 0;
+    background-color:inherit;
+    background-image: url('add.svg'); /* Replace 'icon.png' with the path to your PNG image */
+    background-size: cover; /* Cover the entire button with the background image */
+    width: 70px; /* Adjust width as needed */
+    height: 70px; /* Adjust height as needed */
+    border: none; /* Remove button border */
+    cursor: pointer;
+    padding: 2% 0% 2% 0%;
+  }
+  
+  #AddTag:hover{
+    /* background-color: #e3e3e3; */
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    transition: filter 0.2s linear;
+  }
